@@ -1,4 +1,4 @@
-name: CI/CD Spring Boot CNTT1
+name: CI/CD Spring Boot CNTT4 - Employee
 
 on:
     push:
