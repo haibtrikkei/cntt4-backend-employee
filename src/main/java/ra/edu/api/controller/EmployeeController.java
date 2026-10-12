@@ -26,6 +26,16 @@ public class EmployeeController {
         ), HttpStatus.OK);
     }
 
+    @GetMapping("/{empId}")
+    public ResponseEntity<ApiDataResponse<Employee>> getEmployee(@PathVariable Long empId) {
+        return new ResponseEntity<>(new ApiDataResponse<>(
+                true,
+                "Lấy thông tin nhân viên "+empId+" thành công!",
+                employeeService.getEmployeeById(empId),
+                HttpStatus.OK
+        ), HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<ApiDataResponse<Employee>> insertEmployee(@RequestBody Employee employee) {
         return new ResponseEntity<>(new ApiDataResponse<>(
