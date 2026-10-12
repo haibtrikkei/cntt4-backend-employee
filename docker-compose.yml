@@ -1,8 +1,6 @@
 services:
   backend-employee:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: haibtrikkei/cntt4-backend-employee:latest
     container_name: backend-employee
     restart: always
     ports:
