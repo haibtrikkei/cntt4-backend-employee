@@ -1,0 +1,28 @@
+services:
+  backend-employee:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-employee
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://employee-mysql-db:3306/task_management_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Ho_Chi_Minh
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: 1234$
+    depends_on:
+      - employee-mysql-db
+  employee-mysql-db:
+    image: mysql:8.4
+    container_name: employee-mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234$
+      MYSQL_DATABASE: db_restapi_cntt4_ss2
+#    ports:
+#        - "3307:3306"
+    volumes:
+      - employee-mysql-db-data:/var/lib/mysql
+volumes:
+  employee-mysql-db-data:
